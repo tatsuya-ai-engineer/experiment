@@ -148,3 +148,13 @@ def set_vae(input_shape, kernel_size, latent_dim, recon_filter):
 
 
 vae = set_vae(input_shape, kernel_size, latent_dim, recon_filter)
+
+
+# モデルへのデータ入力と学習
+epoch = 50
+batch_size = 64
+
+result = vae.fit(x=x_tr, epochs=epoch, batch_size=batch_size)
+
+# パラメータ保存
+vae.save_weights("./parameter/vae_para.hdf5")
